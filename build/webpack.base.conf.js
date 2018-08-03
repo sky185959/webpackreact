@@ -1,11 +1,11 @@
-'use strict'
-const path = require('path')
-const webpack = require('webpack')
+'use strict';
+const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const envConfig = require('./webpack.env.conf')
+const envConfig = require('./webpack.env.conf');
 
 function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+  return path.join(__dirname, '..', dir);
 }
 
 module.exports = {
@@ -13,23 +13,23 @@ module.exports = {
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM',
-    'axios': 'axios'
+    'axios': 'axios',
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].[hash:8].js',
-    publicPath: '/'
+    publicPath: '/',
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': envConfig
-    })
+      'process.env': envConfig,
+    }),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      '@': resolve('src')
-    }
+      '@': resolve('src'),
+    },
   },
   module: {
     rules: [
@@ -43,13 +43,13 @@ module.exports = {
           loader: 'eslint-loader', // 指定启用eslint-loader
           options: {
             formatter: require('eslint-friendly-formatter'),
-            emitWarning: false
-          }
-        }]
+            emitWarning: false,
+          },
+        }],
       },
       {
         test: /\.tsx?$/,
-        use: ['awesome-typescript-loader']
+        use: ['awesome-typescript-loader'],
       },
       {
         test: /\.less$/,
@@ -61,7 +61,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               config: {
-                path: 'postcssrc.js'
+                path: 'postcssrc.js',
               },
               sourceMap: false,
             },
@@ -84,7 +84,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               config: {
-                path: 'postcssrc.js'
+                path: 'postcssrc.js',
               },
               sourceMap: false,
             },
@@ -96,29 +96,29 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: ('assets/img/[name].[hash:7].[ext]')
-        }
+          name: ('assets/img/[name].[hash:7].[ext]'),
+        },
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: ('assets/media/[name].[hash:7].[ext]')
-        }
+          name: ('assets/media/[name].[hash:7].[ext]'),
+        },
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: ('assets/fonts/[name].[hash:7].[ext]')
-        }
+          name: ('assets/fonts/[name].[hash:7].[ext]'),
+        },
       },
       {
         test: /\.html$/,
-　　　　 loader: 'html-withimg-loader'
-      }
-    ]
-  }
-}
+　　　　 loader: 'html-withimg-loader',
+      },
+    ],
+  },
+};
