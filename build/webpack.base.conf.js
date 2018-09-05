@@ -1,10 +1,9 @@
-'use strict';
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const envConfig = require('./webpack.env.conf');
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '..', dir);
 }
 
@@ -114,10 +113,6 @@ module.exports = {
           limit: 10000,
           name: ('assets/fonts/[name].[hash:7].[ext]'),
         },
-      },
-      {
-        test: /\.html$/,
-　　　　 loader: 'html-withimg-loader',
       },
     ],
   },
